@@ -1,10 +1,12 @@
-# mount point	fstype    device    	[device2]
-
-/boot       mtd         boot
-/cache      yaffs2      cache
-/data       yaffs2      userdata
-/misc       mtd         misc
-/recovery   mtd         recovery
-/sdcard     vfat        /dev/block/mmcblk0p1        /dev/block/mmcblk0
-/system     yaffs2      system
-/sd-ext     ext4        /dev/block/mmcblk0p2
+#<src>                                         <mnt_point>  <type>  <mnt_flags and options>  <fs_mgr_flags>
+/dev/block/system	/system	ext4	ro,noatime,nodiratime,user_xattr,acl,barrier=1,data=ordered,noauto_da_alloc	defaults
+/dev/block/factory	/factory	yaffs2	rw,nosuid,nodev,relatime	defaults
+/dev/block/data	/data	ext4	rw,nosuid,nodev,noatime,nodiratime,user_xattr,acl,barrier=1,data=ordered,noauto_da_alloc	defaults
+/dev/block/cache	/cache	ext4	rw,nosuid,nodev,noatime,nodiratime,user_xattr,acl,barrier=1,data=ordered,noauto_da_alloc	defaults
+/dev/block/mtdblock9	/media	vfat	rw,dirsync,nosuid,nodev,noexec,relatime,gid=1015,fmask=0002,dmask=0002,allow_utime=0020,codepage=cp437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro	defaults
+/dev/block/cardblksd#	/sd-ext	vfat	rw,dirsync,nosuid,nodev,noexec,relatime,gid=1015,fmask=0002,dmask=0002,allow_utime=0020,codepage=cp437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro	defaults
+/dev/block/mtdblock0	/bootloader	mtd	defaults	defaults
+/dev/block/mtdblock1	/logo	mtd	defaults	defaults
+/dev/block/mtdblock2	/aml_logo	mtd	defaults	defaults
+/dev/block/mtdblock3	/recovery	mtd	defaults	defaults
+/dev/block/mtdblock4	/boot	mtd	defaults	defaults
